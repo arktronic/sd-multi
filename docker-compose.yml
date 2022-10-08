@@ -1,0 +1,68 @@
+version: "3.9"
+services:
+  sd-automatic1111:
+    profiles: [automatic1111]
+    image: localhost/sd-multi/automatic1111:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.automatic1111
+      args:
+        # Comment out the following line to try using the latest - it may not work, though!
+        - GIT_CHECKOUT=2995107fa24cfd72b0a991e18271dcde148c2807
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/output
+      - cache-automatic1111:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  sd-hlky:
+    profiles: [hlky]
+    image: localhost/sd-multi/hlky:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.hlky
+      args:
+        # Comment out the following line to try using the latest - it may not work, though!
+        - GIT_CHECKOUT=1a9c053cb7b6832695771db2555c0adc9b41e95f
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/output
+      - cache-hlky:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  sd-hlky-streamlit:
+    profiles: [hlky-streamlit]
+    image: localhost/sd-multi/hlky:latest
+    command: bash -c 'python -m streamlit run scripts/webui_streamlit.py'
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/output
+      - cache-hlky:/root/.cache
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+volumes:
+  cache-automatic1111:
+  cache-hlky:
