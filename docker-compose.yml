@@ -63,6 +63,29 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  sd-lstein:
+    profiles: [lstein]
+    image: localhost/sd-multi/lstein:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.lstein
+      args:
+        # Comment out the following line to try using the latest - it may not work, though!
+        - GIT_CHECKOUT=8a8be92eac17e0ef699528157596b2336bdee532
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/root/stable-diffusion-webui/outputs
+      - cache-lstein:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 volumes:
   cache-automatic1111:
   cache-hlky:
+  cache-lstein:
