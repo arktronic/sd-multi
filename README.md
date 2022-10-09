@@ -36,6 +36,6 @@ cd sd-multi
 
 - automatic1111: `docker compose --profile automatic1111 up --build`
 - hlky using gradio: `docker compose --profile hlky up --build`
-- hlky using streamlit: `docker compose --profile hlky-streamlit up --build`
+- hlky using streamlit: `docker compose build sd-hlky && docker compose run --service-ports --rm sd-hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'`
 - lstein CLI: `docker compose build sd-lstein && docker compose run --service-ports --rm sd-lstein`
 - lstein web: `docker compose build sd-lstein && docker compose run --service-ports --rm sd-lstein python scripts/dream.py --web --host 0.0.0.0`

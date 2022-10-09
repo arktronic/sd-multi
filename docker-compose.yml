@@ -33,29 +33,11 @@ services:
         - GIT_CHECKOUT=1a9c053cb7b6832695771db2555c0adc9b41e95f
     ports:
       - "7860:7860"
-    volumes:
-      - ./res:/res:ro
-      - ./output:/output
-      - cache-hlky:/root/.cache
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-  sd-hlky-streamlit:
-    profiles: [hlky-streamlit]
-    image: localhost/sd-multi/hlky:latest
-    command: bash -c 'python -m streamlit run scripts/webui_streamlit.py'
-    ports:
       - "8501:8501"
     volumes:
       - ./res:/res:ro
       - ./output:/output
       - cache-hlky:/root/.cache
-    environment:
-      - STREAMLIT_SERVER_HEADLESS=true
     deploy:
       resources:
         reservations:
