@@ -4,6 +4,8 @@
 
 I've noticed that some forks of Stable Diffusion, while very active, often break. This repo adds a little bit of stability and predictability, while at the same time allowing the freedom to (relatively easily) play around with different forks and their features.
 
+Docker is used to provide some isolation between various forks' dependencies.
+
 ## Usage
 
 For a detailed description of how to get this working in Windows using WSL2 and native Docker (not Docker Desktop), see [my blog post](https://trycatch.dev/2022/10/01/stable-diffusion-on-wsl2-with-docker/).
