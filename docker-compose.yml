@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile.automatic1111
       args:
-        # Comment out the following line to try using the latest - it may not work, though!
-        - GIT_CHECKOUT=2995107fa24cfd72b0a991e18271dcde148c2807
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-d3cd46b0388918128af203fda37fa63461c46611}
     ports:
       - "7860:7860"
     volumes:
@@ -29,8 +29,8 @@ services:
       context: .
       dockerfile: Dockerfile.hlky
       args:
-        # Comment out the following line to try using the latest - it may not work, though!
-        - GIT_CHECKOUT=1a9c053cb7b6832695771db2555c0adc9b41e95f
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${HLKY_HASH:-1a9c053cb7b6832695771db2555c0adc9b41e95f}
     ports:
       - "7860:7860"
       - "8501:8501"
@@ -52,8 +52,8 @@ services:
       context: .
       dockerfile: Dockerfile.lstein
       args:
-        # Comment out the following line to try using the latest - it may not work, though!
-        - GIT_CHECKOUT=8a8be92eac17e0ef699528157596b2336bdee532
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${LSTEIN_HASH:-8a8be92eac17e0ef699528157596b2336bdee532}
     ports:
       - "9090:9090"
     volumes:
