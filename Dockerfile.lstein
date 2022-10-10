@@ -38,19 +38,23 @@ ARG GIT_CHECKOUT=main
 RUN git clone https://github.com/invoke-ai/InvokeAI.git stable-diffusion-webui \
  && cd stable-diffusion-webui \
  && git checkout $GIT_CHECKOUT \
- && conda env create -f /root/stable-diffusion-webui/environment.yaml
+ && conda env create -f /root/stable-diffusion-webui/environment.yml
 
-ENV CONDA_DEFAULT_ENV=ldm
+ENV CONDA_DEFAULT_ENV=invokeai
 
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/model.ckpt \
- && rm -rf /opt/conda/envs/ldm/lib/python3.8/site-packages/realesrgan/weights \
- && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/ldm/lib/python3.8/site-packages/realesrgan/weights \
- && rm -rf /opt/conda/envs/ldm/lib/python3.8/site-packages/facexlib/weights \
- && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/ldm/lib/python3.8/site-packages/facexlib/weights \
- && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.cache/.preloaded' ] && mkdir -p /root/.cache/.preload-weights && /root/stable-diffusion-webui/scripts/preload_models.py && touch /root/.cache/.preloaded\nexec \"\$@\"" > /root/bootstrap.sh \
+ && mkdir -p /root/stable-diffusion-webui/src/gfpgan/experiments/pretrained_models \
+ && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/src/gfpgan/experiments/pretrained_models/GFPGANv1.4.pth \
+ && mkdir -p /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights \
+ && ln -s /res/codeformer.pth /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights/codeformer.pth \
+ && rm -rf /opt/conda/envs/invokeai/lib/python3.9/site-packages/realesrgan/weights \
+ && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.9/site-packages/realesrgan/weights \
+ && rm -rf /opt/conda/envs/invokeai/lib/python3.9/site-packages/facexlib/weights \
+ && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.9/site-packages/facexlib/weights \
+ && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.cache/.preloaded' ] && mkdir -p /root/.cache/.preload-weights && python /root/stable-diffusion-webui/scripts/preload_models.py && touch /root/.cache/.preloaded\nexec \"\$@\"" > /root/bootstrap.sh \
  && chmod +x /root/bootstrap.sh
 
 WORKDIR /root/stable-diffusion-webui
 ENTRYPOINT ["/root/bootstrap.sh"]
-CMD python scripts/dream.py
+CMD python scripts/invoke.py --web --host 0.0.0.0

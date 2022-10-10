@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  sd-automatic1111:
+  automatic1111:
     profiles: [automatic1111]
     image: localhost/sd-multi/automatic1111:latest
     build:
@@ -22,7 +22,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  sd-hlky:
+  hlky:
     profiles: [hlky]
     image: localhost/sd-multi/hlky:latest
     build:
@@ -45,7 +45,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  sd-lstein:
+  lstein:
     profiles: [lstein]
     image: localhost/sd-multi/lstein:latest
     build:
@@ -53,7 +53,7 @@ services:
       dockerfile: Dockerfile.lstein
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${LSTEIN_HASH:-8a8be92eac17e0ef699528157596b2336bdee532}
+        - GIT_CHECKOUT=${LSTEIN_HASH:-8954171eea30557ea8f8b9bc0575c34c3630d64e}
     ports:
       - "9090:9090"
     volumes:
@@ -67,7 +67,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  sd-osi1880vr:
+  osi1880vr:
     profiles: [osi1880vr]
     image: localhost/sd-multi/osi1880vr:latest
     build:

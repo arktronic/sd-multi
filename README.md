@@ -50,20 +50,19 @@ docker compose --profile hlky up --build
 
 ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), streamlit mode
 ```bash
-docker compose build sd-hlky \
- && docker compose run --service-ports --rm sd-hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'
-```
-
-⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), CLI mode
-```bash
-docker compose build sd-lstein \
- && docker compose run --service-ports --rm sd-lstein
+docker compose build hlky \
+ && docker compose run --service-ports --rm hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'
 ```
 
 ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), web mode
 ```bash
-docker compose build sd-lstein \
- && docker compose run --service-ports --rm sd-lstein python scripts/dream.py --web --host 0.0.0.0
+docker compose --profile lstein up --build
+```
+
+⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), CLI mode
+```bash
+docker compose build lstein \
+ && docker compose run --service-ports --rm lstein python scripts/invoke.py
 ```
 
 ⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/)
