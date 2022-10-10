@@ -8,12 +8,12 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-d3cd46b0388918128af203fda37fa63461c46611}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-45fbd1c5fec887988ab555aac75a999d4f3aff40}
     ports:
       - "7860:7860"
     volumes:
       - ./res:/res:ro
-      - ./output:/output
+      - ./output:/root/stable-diffusion-webui/outputs
       - cache-automatic1111:/root/.cache
     deploy:
       resources:
@@ -36,7 +36,7 @@ services:
       - "8501:8501"
     volumes:
       - ./res:/res:ro
-      - ./output:/output
+      - ./output:/root/stable-diffusion-webui/outputs
       - cache-hlky:/root/.cache
     deploy:
       resources:
@@ -67,7 +67,30 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  sd-osi1880vr:
+    profiles: [osi1880vr]
+    image: localhost/sd-multi/osi1880vr:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.osi1880vr
+      args:
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${OSI1880VR_HASH:-ea69f9271d29517a7cb4a3ad6c790272e2f82333}
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/root/stable-diffusion-webui/outputs
+      - cache-osi1880vr:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 volumes:
   cache-automatic1111:
   cache-hlky:
   cache-lstein:
+  cache-osi1880vr:

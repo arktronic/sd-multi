@@ -10,7 +10,6 @@ RUN apt update \
 
 VOLUME /root/.cache
 VOLUME /res
-VOLUME /output
 
 ENV PYTHONUNBUFFERED=1
 ENV GRADIO_SERVER_NAME=0.0.0.0
@@ -47,8 +46,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cd repositories/latent-diffusion \
  && git checkout abf33e7002d59d9085081bce93ec798dcabd49af
 
-RUN ln -s /output/ /root/stable-diffusion-webui/outputs \
- && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
+RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
  && ln -s /res/GFPGANv1.3.pth /root/stable-diffusion-webui/GFPGANv1.3.pth \
  && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/GFPGANv1.4.pth \
  && mkdir -p /root/stable-diffusion-webui/models/LDSR \

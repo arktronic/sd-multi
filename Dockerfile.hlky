@@ -10,7 +10,6 @@ RUN apt update \
 
 VOLUME /root/.cache
 VOLUME /res
-VOLUME /output
 
 ENV PYTHONUNBUFFERED=1
 ENV GRADIO_SERVER_NAME=0.0.0.0
@@ -44,8 +43,7 @@ RUN git clone https://github.com/sd-webui/stable-diffusion-webui.git \
 ENV CONDA_DEFAULT_ENV=ldm
 ENV STREAMLIT_SERVER_HEADLESS=true
 
-RUN ln -s /output/ /root/stable-diffusion-webui/outputs \
- && mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
+RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/model.ckpt \
  && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/gfpgan/weights/detection_Resnet50_Final.pth \

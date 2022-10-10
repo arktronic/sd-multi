@@ -70,6 +70,8 @@ verify_file LDSR.ckpt c209caecac2f97b4bb8f4d726b70ac2ac9b35904b7fc99801e1f5e61f9
 verify_file detection_Resnet50_Final.pth 6d1de9c2944f2ccddca5f5e010ea5ae64a39845a86311af6fdf30841b0a5a16d "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth"
 verify_file parsing_parsenet.pth 3d558d8d0e42c20224f13cf5a29c79eba2d59913419f945545d8cf7b72920de2 "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth"
 verify_file SwinIR_4x.pth 99adfa91350a84c99e946c1eb3d8fce34bc28f57d807b09dc8fe40a316328c0a "https://github.com/JingyunLiang/SwinIR/releases/download/v0.0/003_realSR_BSRGAN_DFOWMFC_s64w8_SwinIR-L_x4_GAN.pth"
+verify_file dpt_large-midas-2f21e586.pt 2f21e586477d90cb9624c7eef5df7891edca49a1c4795ee2cb631fd4daa6ca69 "https://github.com/intel-isl/DPT/releases/download/1_0/dpt_large-midas-2f21e586.pt"
+verify_file AdaBins_nyu.pt 3c917d1b86d058918d4055e70b2cdb9696ec4967bb2d8f05c0051263c1ac9641 "https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt"
 #verify_file sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media"
 
 echo ""

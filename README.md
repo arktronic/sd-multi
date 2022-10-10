@@ -65,3 +65,8 @@ docker compose build sd-lstein \
 docker compose build sd-lstein \
  && docker compose run --service-ports --rm sd-lstein python scripts/dream.py --web --host 0.0.0.0
 ```
+
+⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/)
+```bash
+docker compose --profile osi1880vr up --build
+```
