@@ -1,5 +1,7 @@
 # sd-multi - run multiple forks of Stable Diffusion
 
+**[Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
+
 ## Purpose
 
 I've noticed that some forks of Stable Diffusion, while very active, often break. This repo adds a little bit of stability and predictability, while at the same time allowing the freedom to (relatively easily) play around with different forks and their features.
@@ -38,34 +40,52 @@ All the resources (models and weights) are in `~/sd-multi/res/` and all the outp
 
 ### Fork options
 
-⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
+---
+
+#### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
 ```bash
 docker compose --profile automatic1111 up --build
 ```
+![image](https://user-images.githubusercontent.com/344911/194965615-a45a6d8b-3fed-473e-ae3a-44886f0be7a9.png)
 
-⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), gradio mode
+---
+
+#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), gradio mode
 ```bash
 docker compose --profile hlky up --build
 ```
+![image](https://user-images.githubusercontent.com/344911/194965931-46949452-0103-48f1-bb7a-a149338ed97c.png)
 
-⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), streamlit mode
+---
+
+#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), streamlit mode
 ```bash
 docker compose build hlky \
  && docker compose run --service-ports --rm hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'
 ```
+![image](https://user-images.githubusercontent.com/344911/194966164-eb4dc5a4-4ad5-43f1-8d7d-254dbacf4f57.png)
 
-⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), web mode
+---
+
+#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), web mode
 ```bash
 docker compose --profile lstein up --build
 ```
+![image](https://user-images.githubusercontent.com/344911/194965220-d1225e16-9ad0-4093-89e1-f1b60a726719.png)
 
-⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), CLI mode
+---
+
+#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), CLI mode
 ```bash
 docker compose build lstein \
  && docker compose run --service-ports --rm lstein python scripts/invoke.py
 ```
+![image](https://user-images.githubusercontent.com/344911/194965397-36635481-ae00-4b1b-a38f-9f2dae34a84a.png)
 
-⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/)
+---
+
+#### ⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/)
 ```bash
 docker compose --profile osi1880vr up --build
 ```
+![image](https://user-images.githubusercontent.com/344911/194966751-77ecd5a3-1bc3-40a1-8fc9-9ffd12e5c99a.png)
