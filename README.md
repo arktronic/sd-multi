@@ -89,3 +89,9 @@ docker compose build lstein \
 docker compose --profile osi1880vr up --build
 ```
 ![image](https://user-images.githubusercontent.com/344911/194966751-77ecd5a3-1bc3-40a1-8fc9-9ffd12e5c99a.png)
+
+---
+
+## Contributing
+
+If you have any ideas for improvements, suggestions of additional forks to add, or anything else, please create an issue and/or open a PR.
