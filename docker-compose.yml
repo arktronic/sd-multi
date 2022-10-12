@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-42bf5fa3256bff5e4640e5a626e750d4e49e01e1}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-6be32b31d181e42c639dad3451229aa7b9cfd1cf}
     ports:
       - "7860:7860"
     volumes:
@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile.hlky
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${HLKY_HASH:-1a9c053cb7b6832695771db2555c0adc9b41e95f}
+        - GIT_CHECKOUT=${HLKY_HASH:-bcd708f34de80b41c02cf86a79ec4de4438aebe5}
     ports:
       - "7860:7860"
       - "8501:8501"
