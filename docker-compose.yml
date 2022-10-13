@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-6be32b31d181e42c639dad3451229aa7b9cfd1cf}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-698d303b04e293635bfb49c525409f3bcf671dce}
     ports:
       - "7860:7860"
     volumes:
@@ -53,7 +53,7 @@ services:
       dockerfile: Dockerfile.lstein
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${LSTEIN_HASH:-8954171eea30557ea8f8b9bc0575c34c3630d64e}
+        - GIT_CHECKOUT=${LSTEIN_HASH:-94bad8555a8832eca01ed7da6797f65cf6bb9cfb}
     ports:
       - "9090:9090"
     volumes:
