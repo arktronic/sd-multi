@@ -95,3 +95,5 @@ docker compose --profile osi1880vr up --build
 ## Contributing
 
 If you have any ideas for improvements, suggestions of additional forks to add, or anything else, please create an issue and/or open a PR.
+
+_(Maybe there's a cool new fork found in [here](https://github.com/sw-yx/prompt-eng#sd-major-forks) or elsewhere?)_
