@@ -37,6 +37,11 @@ RUN conda install python=3.10.6 -c conda-forge \
  && conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 
 ARG GIT_CHECKOUT=master
+ARG TXT2VECTORGRAPHICS_CHECKOUT=main
+
+RUN apt update \
+ && apt install --no-install-recommends -y potrace \
+ && apt-get clean
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cd stable-diffusion-webui \
@@ -44,7 +49,11 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && COMMANDLINE_ARGS="--exit --skip-torch-cuda-test" python launch.py \
  && git clone https://github.com/Hafiidz/latent-diffusion.git repositories/latent-diffusion \
  && cd repositories/latent-diffusion \
- && git checkout abf33e7002d59d9085081bce93ec798dcabd49af
+ && git checkout abf33e7002d59d9085081bce93ec798dcabd49af \
+ && git clone https://github.com/GeorgLegato/Txt2Vectorgraphics.git ~/txt2vectorgraphics \
+ && cd ~/txt2vectorgraphics \
+ && git checkout $TXT2VECTORGRAPHICS_CHECKOUT \
+ && cp txt2vectorgfx.py /root/stable-diffusion-webui/scripts/
 
 RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
  && ln -s /res/GFPGANv1.3.pth /root/stable-diffusion-webui/GFPGANv1.3.pth \
