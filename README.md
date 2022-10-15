@@ -43,10 +43,11 @@ All the resources (models and weights) are in `~/sd-multi/res/` and all the outp
 ---
 
 #### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
+- includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics)
 ```bash
 docker compose --profile automatic1111 up --build
 ```
-![image](https://user-images.githubusercontent.com/344911/194965615-a45a6d8b-3fed-473e-ae3a-44886f0be7a9.png)
+![image](https://user-images.githubusercontent.com/344911/196003725-c6bb6624-4900-4fa8-a76f-c1639d86fb96.png)
 
 ---
 
