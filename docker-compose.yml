@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-698d303b04e293635bfb49c525409f3bcf671dce}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-be1596ce30b1ead6998da0c62003003dcce5eb2c}
     ports:
       - "7860:7860"
     volumes:
