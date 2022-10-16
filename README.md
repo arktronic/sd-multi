@@ -1,6 +1,6 @@
 # sd-multi - run multiple forks of Stable Diffusion
 
-**[Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
+**[ Forks and Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
 
 ## Purpose
 
@@ -42,7 +42,17 @@ All the resources (models and weights) are in `~/sd-multi/res/` and all the outp
 
 ---
 
-#### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/)
+#### ⭐ [amotile (stable-diffusion-studio)](https://github.com/amotile/stable-diffusion-studio/), an animation-focused frontend
+```bash
+docker compose --profile amotile up --build
+```
+![image](https://user-images.githubusercontent.com/344911/196015333-f91b9cf7-702d-4207-97b6-aa3504aece8b.png)
+
+(Felis catus wasn't behaving well for these transitions, sorry.)
+
+---
+
+#### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), one of the most active forks with lots of features and scripts
 - includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics)
 ```bash
 docker compose --profile automatic1111 up --build
@@ -51,7 +61,7 @@ docker compose --profile automatic1111 up --build
 
 ---
 
-#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), gradio mode
+#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (gradio mode)
 ```bash
 docker compose --profile hlky up --build
 ```
@@ -59,7 +69,7 @@ docker compose --profile hlky up --build
 
 ---
 
-#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), streamlit mode
+#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (streamlit mode)
 ```bash
 docker compose build hlky \
  && docker compose run --service-ports --rm hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'
@@ -68,7 +78,7 @@ docker compose build hlky \
 
 ---
 
-#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), web mode
+#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode)
 ```bash
 docker compose --profile lstein up --build
 ```
@@ -76,7 +86,7 @@ docker compose --profile lstein up --build
 
 ---
 
-#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), CLI mode
+#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (CLI mode)
 ```bash
 docker compose build lstein \
  && docker compose run --service-ports --rm lstein python scripts/invoke.py
@@ -85,7 +95,7 @@ docker compose build lstein \
 
 ---
 
-#### ⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/)
+#### ⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/), a Deforum-based animation/video web UI fork
 ```bash
 docker compose --profile osi1880vr up --build
 ```
