@@ -36,6 +36,7 @@ services:
         # Use a `.env` file to change this; see `env.example`:
         - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-be1596ce30b1ead6998da0c62003003dcce5eb2c}
         - TXT2VECTORGRAPHICS_CHECKOUT=${AUTOMATIC1111_TXT2VECTORGRAPHICS_HASH:-059222e67a36823473e711d4ba69226a17b8bdfe}
+        - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-245f0535d3549d969707ceabc903b2b2a182d55d}
     ports:
       - "7860:7860"
     volumes:
