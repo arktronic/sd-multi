@@ -20,7 +20,7 @@ For a detailed description of how to get this working in Windows using WSL2 and 
 - [Docker Compose plugin](https://docs.docker.com/compose/install/) installed
 - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) installed
 - Git and wget installed in WSL2/Linux
-- The file `sd-v1-4.ckpt` from [HuggingFace](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) (free registration required)
+- The file `sd-v1-4.ckpt` from [Hugging Face](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) (free registration required)
 
 ### Steps
 
