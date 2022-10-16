@@ -53,7 +53,7 @@ docker compose --profile amotile up --build
 ---
 
 #### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), one of the most active forks with lots of features and scripts
-- includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics)
+- includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics) and [Deforum](https://github.com/deforum-art/deforum-for-automatic1111-webui) scripts!
 ```bash
 docker compose --profile automatic1111 up --build
 ```
@@ -78,7 +78,7 @@ docker compose build hlky \
 
 ---
 
-#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode)
+#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode - beautiful interface!)
 ```bash
 docker compose --profile lstein up --build
 ```
