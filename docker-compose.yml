@@ -1,5 +1,31 @@
 version: "3.9"
 services:
+  amotile:
+    profiles: [amotile]
+    image: localhost/sd-multi/amotile:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.amotile
+      args:
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${AMOTILE_HASH:-5dff371f19933a342bd17620597a9fbbe431355e}
+        - AUTOMATIC1111_CHECKOUT=${AMOTILE_AUTOMATIC1111_HASH:-494afccbc1d7b0aca4ffeb3d8354b09c414d95f4}
+        - AMOTILE_BACKEND_CHECKOUT=${AMOTILE_BACKEND_HASH:-080f063b74b058482600feb0832d6927e58c91ea}
+    init: true
+    ports:
+      - "4000:4000"
+      - "4001:4001"
+    volumes:
+      - ./res:/res:ro
+      - ./output/amotile:/root/stable-diffusion-backend/data
+      - cache-amotile:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   automatic1111:
     profiles: [automatic1111]
     image: localhost/sd-multi/automatic1111:latest
@@ -91,6 +117,7 @@ services:
               count: 1
               capabilities: [gpu]
 volumes:
+  cache-amotile:
   cache-automatic1111:
   cache-hlky:
   cache-lstein:
