@@ -1,4 +1,4 @@
-# sd-multi - run multiple forks of Stable Diffusion
+# sd-multi - run multiple Stable Diffusion forks in Docker
 
 **[ Forks and Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
 
