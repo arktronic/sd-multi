@@ -71,7 +71,14 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && ln -s /res/SwinIR_4x.pth /root/stable-diffusion-webui/models/SwinIR/SwinIR_4x.pth \
  && mkdir -p /root/stable-diffusion-webui/models/Deforum \
  && ln -s /res/dpt_large-midas-2f21e586.pt /root/stable-diffusion-webui/models/Deforum/dpt_large-midas-2f21e586.pt \
- && ln -s /res/AdaBins_nyu.pt /root/stable-diffusion-webui/models/Deforum/AdaBins_nyu.pt
+ && ln -s /res/AdaBins_nyu.pt /root/stable-diffusion-webui/models/Deforum/AdaBins_nyu.pt \
+ && mkdir -p /root/stable-diffusion-webui/models/BSRGAN \
+ && ln -s /res/BSRGAN.pth /root/stable-diffusion-webui/models/BSRGAN/BSRGAN.pth \
+ && mkdir -p /root/stable-diffusion-webui/models/ESRGAN \
+ && ln -s /res/ESRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/ESRGAN_4x.pth \
+ && mkdir -p /root/stable-diffusion-webui/models/RealESRGAN \
+ && ln -s /res/RealESRGAN_x4plus.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus.pth \
+ && ln -s /res/RealESRGAN_x4plus_anime_6B.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth
 
 WORKDIR /root/stable-diffusion-webui
-CMD python launch.py --disable-safe-unpickle
+CMD python launch.py --disable-safe-unpickle --ckpt-dir /res/checkpoints
