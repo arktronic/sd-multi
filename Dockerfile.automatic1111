@@ -34,14 +34,15 @@ RUN mkdir ~/.conda \
  && /opt/conda/bin/conda clean -afy
 
 RUN conda install python=3.10.6 -c conda-forge \
- && conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+ && conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch \
+ && conda remove --force --yes ffmpeg
 
 ARG GIT_CHECKOUT=master
 ARG TXT2VECTORGRAPHICS_CHECKOUT=main
 ARG DEFORUM_CHECKOUT=automatic1111-webui
 
 RUN apt update \
- && apt install --no-install-recommends -y potrace \
+ && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y ffmpeg potrace \
  && apt-get clean
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
@@ -62,8 +63,6 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cp -R deforum /root/stable-diffusion-webui/scripts/
 
 RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
- && ln -s /res/GFPGANv1.3.pth /root/stable-diffusion-webui/GFPGANv1.3.pth \
- && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/GFPGANv1.4.pth \
  && mkdir -p /root/stable-diffusion-webui/models/LDSR \
  && ln -s /res/LDSR.ckpt /root/stable-diffusion-webui/models/LDSR/model.ckpt \
  && ln -s /res/LDSR.yaml /root/stable-diffusion-webui/models/LDSR/project.yaml \
@@ -78,7 +77,16 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && ln -s /res/ESRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/ESRGAN_4x.pth \
  && mkdir -p /root/stable-diffusion-webui/models/RealESRGAN \
  && ln -s /res/RealESRGAN_x4plus.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus.pth \
- && ln -s /res/RealESRGAN_x4plus_anime_6B.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth
+ && ln -s /res/RealESRGAN_x4plus_anime_6B.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth \
+ && mkdir -p /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib \
+ && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib/parsing_parsenet.pth \
+ && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib/detection_Resnet50_Final.pth \
+ && mkdir -p /root/stable-diffusion-webui/models/Codeformer \
+ && ln -s /res/codeformer.pth /root/stable-diffusion-webui/models/Codeformer/codeformer-v0.1.0.pth \
+ && mkdir -p /root/stable-diffusion-webui/models/GFPGAN \
+ && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/models/GFPGAN/parsing_parsenet.pth \
+ && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/models/GFPGAN/detection_Resnet50_Final.pth \
+ && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/models/GFPGAN/GFPGANv1.4.pth
 
 WORKDIR /root/stable-diffusion-webui
 CMD python launch.py --disable-safe-unpickle --ckpt-dir /res/checkpoints
