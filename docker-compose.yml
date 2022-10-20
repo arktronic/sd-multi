@@ -41,6 +41,7 @@ services:
       - "7860:7860"
     volumes:
       - ./res:/res:ro
+      - ./res/checkpoints:/res/checkpoints:rw
       - ./output:/root/stable-diffusion-webui/outputs
       - cache-automatic1111:/root/.cache
     deploy:
