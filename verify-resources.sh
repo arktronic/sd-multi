@@ -18,21 +18,24 @@ ERR=0
 
 mkdir -p ./res/checkpoints
 [ ! -f "./res/checkpoints/sd-v1-4.ckpt" ] && ln -sf ../sd-v1-4.ckpt ./res/checkpoints/sd-v1-4.ckpt
+[ ! -f "./res/checkpoints/v1-5-pruned-emaonly.ckpt" ] && ln -sf ../v1-5-pruned-emaonly.ckpt ./res/checkpoints/v1-5-pruned-emaonly.ckpt
 
-# The SD model is a special case:
-echo "***** Checking res/sd-v1-4.ckpt..."
-if [ -f "res/sd-v1-4.ckpt" ]; then
-  echo "fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556  res/sd-v1-4.ckpt" | sha256sum -c --quiet &>/dev/null || {
-    echo "WARNING: res/sd-v1-4.ckpt appears to be corrupted!"
-    echo "Please download it again from https://huggingface.co/CompVis/stable-diffusion-v-1-4-original"
+# SD models cannot be downloaded directly
+function verify_file_huggingface {
+  echo "***** Checking res/$1..."
+  if [ -f "res/sd-v1-4.ckpt" ]; then
+    echo "$2  res/$1" | sha256sum -c --quiet &>/dev/null || {
+      echo "WARNING: res/$1 appears to be corrupted!"
+      echo "Please download it again from $3"
+      ERR=1
+    }
+  else
+    echo "WARNING: res/$1 is missing!"
+    echo "Please download it from $3"
+    echo "(You will need to register for a free account and agree to terms of use)"
     ERR=1
-  }
-else
-  echo "WARNING: res/sd-v1-4.ckpt is missing!"
-  echo "Please download it from https://huggingface.co/CompVis/stable-diffusion-v-1-4-original"
-  echo "(You will need to register a free account and agree to terms of use)"
-  ERR=1
 fi
+}
 
 # The other files are all verified and downloaded in a similar way:
 function verify_file {
@@ -77,6 +80,9 @@ verify_file dpt_large-midas-2f21e586.pt 2f21e586477d90cb9624c7eef5df7891edca49a1
 verify_file AdaBins_nyu.pt 3c917d1b86d058918d4055e70b2cdb9696ec4967bb2d8f05c0051263c1ac9641 "https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt"
 verify_file codeformer.pth 1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7 "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth"
 #verify_file sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media"
+
+verify_file_huggingface sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://huggingface.co/CompVis/stable-diffusion-v-1-4-original"
+verify_file_huggingface v1-5-pruned-emaonly.ckpt cc6cb27103417325ff94f52b7a5d2dde45a7515b25c255d8e396c90014281516 "https://huggingface.co/runwayml/stable-diffusion-v1-5"
 
 echo ""
 if [ $ERR -eq 0 ]; then
