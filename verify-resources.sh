@@ -23,7 +23,7 @@ mkdir -p ./res/checkpoints
 # SD models cannot be downloaded directly
 function verify_file_huggingface {
   echo "***** Checking res/$1..."
-  if [ -f "res/sd-v1-4.ckpt" ]; then
+  if [ -f "res/$1" ]; then
     echo "$2  res/$1" | sha256sum -c --quiet &>/dev/null || {
       echo "WARNING: res/$1 appears to be corrupted!"
       echo "Please download it again from $3"
