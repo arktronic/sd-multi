@@ -60,7 +60,8 @@ services:
       dockerfile: Dockerfile.hlky
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${HLKY_HASH:-bcd708f34de80b41c02cf86a79ec4de4438aebe5}
+        - GIT_CHECKOUT=${HLKY_HASH:-8229d1bd9266021bda5bd0bbfc106ccba01c1bf5}
+    init: true
     ports:
       - "7860:7860"
       - "8501:8501"
