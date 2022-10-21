@@ -83,7 +83,8 @@ services:
       dockerfile: Dockerfile.lstein
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${LSTEIN_HASH:-94bad8555a8832eca01ed7da6797f65cf6bb9cfb}
+        - GIT_CHECKOUT=${LSTEIN_HASH:-e4ed0943e2d87b59d8f4f482e8d1fdb962ba82ea}
+    init: true
     ports:
       - "9090:9090"
     volumes:

@@ -48,10 +48,10 @@ RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/src/gfpgan/experiments/pretrained_models/GFPGANv1.4.pth \
  && mkdir -p /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights \
  && ln -s /res/codeformer.pth /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights/codeformer.pth \
- && rm -rf /opt/conda/envs/invokeai/lib/python3.9/site-packages/realesrgan/weights \
- && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.9/site-packages/realesrgan/weights \
- && rm -rf /opt/conda/envs/invokeai/lib/python3.9/site-packages/facexlib/weights \
- && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.9/site-packages/facexlib/weights \
+ && rm -rf /opt/conda/envs/invokeai/lib/python3.10/site-packages/realesrgan/weights \
+ && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.10/site-packages/realesrgan/weights \
+ && rm -rf /opt/conda/envs/invokeai/lib/python3.10/site-packages/facexlib/weights \
+ && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.10/site-packages/facexlib/weights \
  && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.cache/.preloaded' ] && mkdir -p /root/.cache/.preload-weights && python /root/stable-diffusion-webui/scripts/preload_models.py && touch /root/.cache/.preloaded\nexec \"\$@\"" > /root/bootstrap.sh \
  && chmod +x /root/bootstrap.sh
 
