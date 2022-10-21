@@ -22,7 +22,7 @@ mkdir -p ./res/checkpoints
 
 # SD models cannot be downloaded directly
 function verify_file_huggingface {
-  echo "***** Checking res/$1..."
+  echo "***** Checking $1..."
   if [ -f "res/$1" ]; then
     echo "$2  res/$1" | sha256sum -c --quiet &>/dev/null || {
       echo "WARNING: res/$1 appears to be corrupted!"
@@ -83,10 +83,13 @@ verify_file codeformer.pth 1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64c
 
 verify_file_huggingface sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://huggingface.co/CompVis/stable-diffusion-v-1-4-original"
 verify_file_huggingface v1-5-pruned-emaonly.ckpt cc6cb27103417325ff94f52b7a5d2dde45a7515b25c255d8e396c90014281516 "https://huggingface.co/runwayml/stable-diffusion-v1-5"
+verify_file_huggingface sd-v1-5-inpainting.ckpt c6bbc15e3224e6973459ba78de4998b80b50112b0ae5b5c67113d56b4e366b19 "https://huggingface.co/runwayml/stable-diffusion-inpainting"
 
 echo ""
 if [ $ERR -eq 0 ]; then
   echo "Everything seems to be in order!"
 else
-  echo "Issues were found. Please address them, or SD may not work correctly."
+  echo "Issues were found. Please address them, or SD might not work correctly."
+  echo "You should at least have sd-v1-4.ckpt downloaded because forks rely on it by default."
+  echo "Other SD weight file versions (v1.5, inpainting) are optional, for now."
 fi
