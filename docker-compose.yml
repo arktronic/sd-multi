@@ -34,9 +34,9 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-f49c08ea566385db339c6628f65c3a121033f67c}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-48dbf99e84045ee7af55bc5b1b86492a240e631e}
         - TXT2VECTORGRAPHICS_CHECKOUT=${AUTOMATIC1111_TXT2VECTORGRAPHICS_HASH:-2b780584f603b9abebba02527f3e0c3eed63426b}
-        - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-5adc70139446c42f703f0ecfe887ccc419981d91}
+        - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-000deeeef69016612fe3cdec9234f97d87d30748}
     init: true
     ports:
       - "7860:7860"

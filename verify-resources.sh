@@ -16,10 +16,6 @@ done
 
 ERR=0
 
-mkdir -p ./res/checkpoints
-[ ! -f "./res/checkpoints/sd-v1-4.ckpt" ] && ln -sf ../sd-v1-4.ckpt ./res/checkpoints/sd-v1-4.ckpt
-[ ! -f "./res/checkpoints/v1-5-pruned-emaonly.ckpt" ] && ln -sf ../v1-5-pruned-emaonly.ckpt ./res/checkpoints/v1-5-pruned-emaonly.ckpt
-
 # SD models cannot be downloaded directly
 function verify_file_huggingface {
   echo "***** Checking $1..."
@@ -79,11 +75,17 @@ verify_file SwinIR_4x.pth 99adfa91350a84c99e946c1eb3d8fce34bc28f57d807b09dc8fe40
 verify_file dpt_large-midas-2f21e586.pt 2f21e586477d90cb9624c7eef5df7891edca49a1c4795ee2cb631fd4daa6ca69 "https://github.com/intel-isl/DPT/releases/download/1_0/dpt_large-midas-2f21e586.pt"
 verify_file AdaBins_nyu.pt 3c917d1b86d058918d4055e70b2cdb9696ec4967bb2d8f05c0051263c1ac9641 "https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt"
 verify_file codeformer.pth 1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7 "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth"
+verify_file vae-ft-mse-840000-ema-pruned.ckpt c6a580b13a5bc05a5e16e4dbb80608ff2ec251a162311590c1f34c013d7f3dab "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"
 #verify_file sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media"
 
 verify_file_huggingface sd-v1-4.ckpt fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556 "https://huggingface.co/CompVis/stable-diffusion-v-1-4-original"
 verify_file_huggingface v1-5-pruned-emaonly.ckpt cc6cb27103417325ff94f52b7a5d2dde45a7515b25c255d8e396c90014281516 "https://huggingface.co/runwayml/stable-diffusion-v1-5"
 verify_file_huggingface sd-v1-5-inpainting.ckpt c6bbc15e3224e6973459ba78de4998b80b50112b0ae5b5c67113d56b4e366b19 "https://huggingface.co/runwayml/stable-diffusion-inpainting"
+
+mkdir -p ./res/checkpoints
+[ -f "./res/sd-v1-4.ckpt" ] && [ ! -f "./res/checkpoints/sd-v1-4.ckpt" ] && ln -sf ../sd-v1-4.ckpt ./res/checkpoints/sd-v1-4.ckpt
+[ -f "./res/v1-5-pruned-emaonly.ckpt" ] && [ ! -f "./res/checkpoints/v1-5-pruned-emaonly.ckpt" ] && ln -sf ../v1-5-pruned-emaonly.ckpt ./res/checkpoints/v1-5-pruned-emaonly.ckpt
+[ -f "./res/vae-ft-mse-840000-ema-pruned.ckpt" ] && [ ! -f "./res/checkpoints/v1-5-pruned-emaonly.vae.pt" ] && ln -sf ../vae-ft-mse-840000-ema-pruned.ckpt ./res/checkpoints/v1-5-pruned-emaonly.vae.pt
 
 echo ""
 if [ $ERR -eq 0 ]; then
