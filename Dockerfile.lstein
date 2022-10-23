@@ -52,6 +52,9 @@ RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.10/site-packages/realesrgan/weights \
  && rm -rf /opt/conda/envs/invokeai/lib/python3.10/site-packages/facexlib/weights \
  && ln -s /root/.cache/.preload-weights/ /opt/conda/envs/invokeai/lib/python3.10/site-packages/facexlib/weights \
+ && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
+ && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/gfpgan/weights/detection_Resnet50_Final.pth \
+ && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/gfpgan/weights/parsing_parsenet.pth \
  && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.cache/.preloaded' ] && mkdir -p /root/.cache/.preload-weights && python /root/stable-diffusion-webui/scripts/preload_models.py && touch /root/.cache/.preloaded\nexec \"\$@\"" > /root/bootstrap.sh \
  && chmod +x /root/bootstrap.sh
 
