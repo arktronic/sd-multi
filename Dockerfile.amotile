@@ -66,7 +66,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && rm -rf frontend &>/dev/null || true \
  && ln -s /root/stable-diffusion-studio/build/ frontend
 
-RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
+RUN ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
  && ln -s /res/GFPGANv1.3.pth /root/stable-diffusion-webui/GFPGANv1.3.pth \
  && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/GFPGANv1.4.pth \
  && mkdir -p /root/stable-diffusion-webui/models/LDSR \

@@ -44,7 +44,7 @@ ENV CONDA_DEFAULT_ENV=ldm
 ENV STREAMLIT_SERVER_HEADLESS=true
 
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
- && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/model.ckpt \
+ && ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/model.ckpt \
  && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/gfpgan/weights/detection_Resnet50_Final.pth \
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/gfpgan/weights/parsing_parsenet.pth \

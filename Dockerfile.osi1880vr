@@ -52,7 +52,7 @@ ENV STREAMLIT_SERVER_HEADLESS=true
 RUN mkdir -p /root/stable-diffusion-webui/models \
  && mkdir -p /root/stable-diffusion-webui/content \
  && ln -s /root/stable-diffusion-webui/models/ /root/stable-diffusion-webui/content/models \
- && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/sd-v1-4.ckpt \
+ && ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/sd-v1-4.ckpt \
  && ln -s /res/dpt_large-midas-2f21e586.pt /root/stable-diffusion-webui/models/dpt_large-midas-2f21e586.pt \
  && mkdir -p /root/stable-diffusion-webui/pretrained \
  && ln -s /res/AdaBins_nyu.pt /root/stable-diffusion-webui/pretrained/AdaBins_nyu.pt \

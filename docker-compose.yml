@@ -8,13 +8,14 @@ services:
       dockerfile: Dockerfile.amotile
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AMOTILE_HASH:-5dff371f19933a342bd17620597a9fbbe431355e}
-        - AUTOMATIC1111_CHECKOUT=${AMOTILE_AUTOMATIC1111_HASH:-494afccbc1d7b0aca4ffeb3d8354b09c414d95f4}
-        - AMOTILE_BACKEND_CHECKOUT=${AMOTILE_BACKEND_HASH:-080f063b74b058482600feb0832d6927e58c91ea}
+        - GIT_CHECKOUT=${AMOTILE_HASH:-8c1bd17080cd40cf42b66d11f470f260e2982ce5}
+        - AUTOMATIC1111_CHECKOUT=${AMOTILE_AUTOMATIC1111_HASH:-48dbf99e84045ee7af55bc5b1b86492a240e631e}
+        - AMOTILE_BACKEND_CHECKOUT=${AMOTILE_BACKEND_HASH:-c6b11731a8a76b6470e89c4c8a2c931672ec125b}
     init: true
     ports:
       - "4000:4000"
       - "4001:4001"
+      - "7860:7860"
     volumes:
       - ./res:/res:ro
       - ./output/amotile:/root/stable-diffusion-backend/data

@@ -87,6 +87,11 @@ mkdir -p ./res/checkpoints
 [ -f "./res/v1-5-pruned-emaonly.ckpt" ] && [ ! -f "./res/checkpoints/v1-5-pruned-emaonly.ckpt" ] && ln -sf ../v1-5-pruned-emaonly.ckpt ./res/checkpoints/v1-5-pruned-emaonly.ckpt
 [ -f "./res/vae-ft-mse-840000-ema-pruned.ckpt" ] && [ ! -f "./res/checkpoints/v1-5-pruned-emaonly.vae.pt" ] && ln -sf ../vae-ft-mse-840000-ema-pruned.ckpt ./res/checkpoints/v1-5-pruned-emaonly.vae.pt
 
+# The following will choose SD v1.5, with a fallback to v1.4, for the target model to use in various forks
+# You can manually change the target-model.ckpt file afterward
+[ -f "./res/v1-5-pruned-emaonly.ckpt" ] && ln -sf ./v1-5-pruned-emaonly.ckpt ./res/target-model.ckpt
+[ -f "./res/sd-v1-4.ckpt" ] && [ ! -f "./res/target-model.ckpt" ] && ln -sf ./sd-v1-4.ckpt ./res/target-model.ckpt
+
 echo ""
 if [ $ERR -eq 0 ]; then
   echo "Everything seems to be in order!"
