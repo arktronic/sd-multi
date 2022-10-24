@@ -71,13 +71,11 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && mkdir -p /root/stable-diffusion-webui/models/Deforum \
  && ln -s /res/dpt_large-midas-2f21e586.pt /root/stable-diffusion-webui/models/Deforum/dpt_large-midas-2f21e586.pt \
  && ln -s /res/AdaBins_nyu.pt /root/stable-diffusion-webui/models/Deforum/AdaBins_nyu.pt \
- && mkdir -p /root/stable-diffusion-webui/models/BSRGAN \
- && ln -s /res/BSRGAN.pth /root/stable-diffusion-webui/models/BSRGAN/BSRGAN.pth \
  && mkdir -p /root/stable-diffusion-webui/models/ESRGAN \
+ && ln -s /res/BSRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/BSRGAN.pth \
  && ln -s /res/ESRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/ESRGAN_4x.pth \
- && mkdir -p /root/stable-diffusion-webui/models/RealESRGAN \
- && ln -s /res/RealESRGAN_x4plus.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus.pth \
- && ln -s /res/RealESRGAN_x4plus_anime_6B.pth /root/stable-diffusion-webui/models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth \
+ && ln -s /res/RealESRGAN_x4plus.pth /root/stable-diffusion-webui/models/ESRGAN/RealESRGAN_x4plus.pth \
+ && ln -s /res/RealESRGAN_x4plus_anime_6B.pth /root/stable-diffusion-webui/models/ESRGAN/RealESRGAN_x4plus_anime_6B.pth \
  && mkdir -p /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib \
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib/parsing_parsenet.pth \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/repositories/CodeFormer/weights/facelib/detection_Resnet50_Final.pth \
@@ -86,7 +84,13 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && mkdir -p /root/stable-diffusion-webui/models/GFPGAN \
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/models/GFPGAN/parsing_parsenet.pth \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/models/GFPGAN/detection_Resnet50_Final.pth \
- && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/models/GFPGAN/GFPGANv1.4.pth
+ && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/models/GFPGAN/GFPGANv1.4.pth \
+ && echo -e "#!/bin/bash\nset -e\n" > /root/bootstrap.sh \
+ && echo -e "[ ! -f '/root/.cache/persistent-ui-config.json' ] && echo '{}' > /root/.cache/persistent-ui-config.json\nln -sf /root/.cache/persistent-ui-config.json /root/stable-diffusion-webui/ui-config.json\n" >> /root/bootstrap.sh \
+ && echo -e "[ ! -f '/root/.cache/persistent-config.json' ] && echo '{}' > /root/.cache/persistent-config.json\nln -sf /root/.cache/persistent-config.json /root/stable-diffusion-webui/config.json\n" >> /root/bootstrap.sh \
+ && echo -e "exec \"\$@\"" >> /root/bootstrap.sh \
+ && chmod +x /root/bootstrap.sh
 
 WORKDIR /root/stable-diffusion-webui
+ENTRYPOINT ["/root/bootstrap.sh"]
 CMD python launch.py --disable-safe-unpickle --ckpt-dir /res/checkpoints

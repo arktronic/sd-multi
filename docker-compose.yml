@@ -35,7 +35,7 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-48dbf99e84045ee7af55bc5b1b86492a240e631e}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-6bd6154a92eb05c80d66df661a38f8b70cc13729}
         - TXT2VECTORGRAPHICS_CHECKOUT=${AUTOMATIC1111_TXT2VECTORGRAPHICS_HASH:-2b780584f603b9abebba02527f3e0c3eed63426b}
         - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-000deeeef69016612fe3cdec9234f97d87d30748}
     init: true
