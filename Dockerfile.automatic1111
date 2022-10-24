@@ -56,11 +56,9 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cd /root/vector-script \
  && git checkout $TXT2VECTORGRAPHICS_CHECKOUT \
  && cp txt2vectorgfx.py /root/stable-diffusion-webui/scripts/ \
- && git clone https://github.com/deforum-art/deforum-for-automatic1111-webui.git /root/deforum-script \
- && cd /root/deforum-script \
- && git checkout $DEFORUM_CHECKOUT \
- && cp deforum.py /root/stable-diffusion-webui/scripts/ \
- && cp -R deforum /root/stable-diffusion-webui/scripts/
+ && git clone https://github.com/deforum-art/deforum-for-automatic1111-webui.git /root/stable-diffusion-webui/extensions/deforum \
+ && cd /root/stable-diffusion-webui/extensions/deforum \
+ && git checkout $DEFORUM_CHECKOUT
 
 RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
  && mkdir -p /root/stable-diffusion-webui/models/LDSR \
