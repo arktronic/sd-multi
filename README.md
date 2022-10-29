@@ -86,7 +86,7 @@ docker compose --profile osi1880vr up --build
 
 ---
 
-#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (gradio mode)
+#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/Sygil-Dev/sygil-webui/), an established, easy to use fork (gradio mode)
 ```bash
 docker compose --profile sygil up --build
 ```
@@ -94,7 +94,7 @@ docker compose --profile sygil up --build
 
 ---
 
-#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (streamlit mode)
+#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/Sygil-Dev/sygil-webui/), an established, easy to use fork (streamlit mode)
 ```bash
 docker compose build sygil \
  && docker compose run --service-ports --rm sygil bash -c 'python -m streamlit run scripts/webui_streamlit.py'
