@@ -1,16 +1,16 @@
-# sd-multi - run multiple Stable Diffusion forks in Docker
+# sd-multi - run multiple Stable Diffusion systems in Docker
 
-**[ Forks and Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
+**[ Systems and Screenshots 👇](https://github.com/arktronic/sd-multi#fork-options)**
 
 ## Purpose
 
-I've noticed that some forks of Stable Diffusion, while very active, often break. This repo adds a little bit of stability and predictability, while at the same time allowing the freedom to (relatively easily) play around with different forks and their features.
+I've noticed that some forks of Stable Diffusion, while very active, often break. This repo adds a little bit of stability and predictability, while at the same time allowing the freedom to (relatively easily) play around with different forks/frontends/systems and their features.
 
-Docker is used to provide some isolation between various forks' dependencies beyond what Anaconda can do. It also consolidates input and output locations.
+Docker is used to provide some isolation between various systems' dependencies beyond what Anaconda can do. It also consolidates input and output locations.
 
 ## Usage
 
-For a detailed description of how to get this working in Windows using WSL2 and native Docker (not Docker Desktop), see [my blog post](https://trycatch.dev/2022/10/01/stable-diffusion-on-wsl2-with-docker/).
+For a detailed description of how to get this working in Windows using WSL2 and native Docker (not Docker Desktop), see **[my blog post](https://trycatch.dev/2022/10/01/stable-diffusion-on-wsl2-with-docker/)**.
 
 ### Prerequisites
 
@@ -75,6 +75,14 @@ docker compose build invokeai \
  && docker compose run --service-ports --rm lstein python scripts/invoke.py
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965397-36635481-ae00-4b1b-a38f-9f2dae34a84a.png)
+
+---
+
+#### ⭐ [lama-cleaner](https://github.com/osi1880vr/deforum-sd-ui/), an inpainting tool that supports SD and other models
+```bash
+docker compose --profile lama up --build
+```
+![image](https://user-images.githubusercontent.com/344911/198845014-95a689b3-65e3-4a5a-bb83-7b18b5a1c07f.png)
 
 ---
 
