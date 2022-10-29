@@ -55,40 +55,23 @@ docker compose --profile amotile up --build
 #### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), one of the most active forks with lots of features and scripts
 - includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics) script and [Deforum](https://github.com/deforum-art/deforum-for-automatic1111-webui) extension!
 ```bash
-docker compose --profile automatic1111 up --build
+docker compose --profile auto up --build
 ```
 ![image](https://user-images.githubusercontent.com/344911/196003725-c6bb6624-4900-4fa8-a76f-c1639d86fb96.png)
 
 ---
 
-#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (gradio mode)
+#### ⭐ [InvokeAI (a.k.a. lstein)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode - beautiful interface!)
 ```bash
-docker compose --profile hlky up --build
-```
-![image](https://user-images.githubusercontent.com/344911/194965931-46949452-0103-48f1-bb7a-a149338ed97c.png)
-
----
-
-#### ⭐ [hlky (sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (streamlit mode)
-```bash
-docker compose build hlky \
- && docker compose run --service-ports --rm hlky bash -c 'python -m streamlit run scripts/webui_streamlit.py'
-```
-![image](https://user-images.githubusercontent.com/344911/194966164-eb4dc5a4-4ad5-43f1-8d7d-254dbacf4f57.png)
-
----
-
-#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode - beautiful interface!)
-```bash
-docker compose --profile lstein up --build
+docker compose --profile invokeai up --build
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965220-d1225e16-9ad0-4093-89e1-f1b60a726719.png)
 
 ---
 
-#### ⭐ [lstein (InvokeAI)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (CLI mode)
+#### ⭐ [InvokeAI (a.k.a. lstein)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (CLI mode)
 ```bash
-docker compose build lstein \
+docker compose build invokeai \
  && docker compose run --service-ports --rm lstein python scripts/invoke.py
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965397-36635481-ae00-4b1b-a38f-9f2dae34a84a.png)
@@ -100,6 +83,23 @@ docker compose build lstein \
 docker compose --profile osi1880vr up --build
 ```
 ![image](https://user-images.githubusercontent.com/344911/194966751-77ecd5a3-1bc3-40a1-8fc9-9ffd12e5c99a.png)
+
+---
+
+#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (gradio mode)
+```bash
+docker compose --profile sygil up --build
+```
+![image](https://user-images.githubusercontent.com/344911/194965931-46949452-0103-48f1-bb7a-a149338ed97c.png)
+
+---
+
+#### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/sd-webui/stable-diffusion-webui/), an established, easy to use fork (streamlit mode)
+```bash
+docker compose build sygil \
+ && docker compose run --service-ports --rm sygil bash -c 'python -m streamlit run scripts/webui_streamlit.py'
+```
+![image](https://user-images.githubusercontent.com/344911/194966164-eb4dc5a4-4ad5-43f1-8d7d-254dbacf4f57.png)
 
 ---
 
