@@ -16,6 +16,7 @@ For a detailed description of how to get this working in Windows using WSL2 and 
 
 - A modern Nvidia GPU
 - Windows 10/11 with [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) or native Linux
+- Lots of free disk space (200+ GB recommended if experimenting)
 - [Docker CE](https://docs.docker.com/engine/install/) installed
 - [Docker Compose plugin](https://docs.docker.com/compose/install/) installed
 - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) installed
