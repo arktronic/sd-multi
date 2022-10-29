@@ -37,13 +37,13 @@ RUN conda install python=3.10.6 -c conda-forge \
  && conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch \
  && conda remove --force --yes ffmpeg
 
-ARG GIT_CHECKOUT=master
-ARG TXT2VECTORGRAPHICS_CHECKOUT=main
-ARG DEFORUM_CHECKOUT=automatic1111-webui
-
 RUN apt update \
  && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y ffmpeg potrace \
  && apt-get clean
+
+ARG GIT_CHECKOUT=master
+ARG TXT2VECTORGRAPHICS_CHECKOUT=main
+ARG DEFORUM_CHECKOUT=automatic1111-webui
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cd stable-diffusion-webui \
