@@ -53,6 +53,29 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  invokeai:
+    profiles: [invokeai, lstein]
+    image: localhost/sd-multi/invokeai:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.invokeai
+      args:
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${INVOKEAI_HASH:-986cc49d7a8441a70c709c04a55016a1c783f2ed}
+    init: true
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/root/stable-diffusion-webui/outputs
+      - cache-invokeai:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   lama:
     profiles: [lama]
     image: localhost/sd-multi/lama:latest
@@ -71,29 +94,6 @@ services:
       - ./res:/res:ro
       - ./output:/root/outputs
       - cache-lama:/root/.cache
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-  lstein:
-    profiles: [lstein]
-    image: localhost/sd-multi/lstein:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.lstein
-      args:
-        # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${LSTEIN_HASH:-986cc49d7a8441a70c709c04a55016a1c783f2ed}
-    init: true
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./res:/res:ro
-      - ./output:/root/stable-diffusion-webui/outputs
-      - cache-lstein:/root/.cache
     deploy:
       resources:
         reservations:
@@ -165,7 +165,7 @@ services:
 volumes:
   cache-amotile:
   cache-automatic1111:
-  cache-sygil:
+  cache-invokeai:
   cache-lama:
-  cache-lstein:
   cache-osi1880vr:
+  cache-sygil:
