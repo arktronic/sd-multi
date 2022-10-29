@@ -53,30 +53,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  hlky:
-    profiles: [hlky]
-    image: localhost/sd-multi/hlky:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.hlky
-      args:
-        # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${HLKY_HASH:-8229d1bd9266021bda5bd0bbfc106ccba01c1bf5}
-    init: true
-    ports:
-      - "7860:7860"
-      - "8501:8501"
-    volumes:
-      - ./res:/res:ro
-      - ./output:/root/stable-diffusion-webui/outputs
-      - cache-hlky:/root/.cache
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
   lama:
     profiles: [lama]
     image: localhost/sd-multi/lama:latest
@@ -147,6 +123,32 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  sygil:
+    profiles: [sygil, hlky]
+    image: localhost/sd-multi/sygil:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.sygil
+      args:
+        # Use a `.env` file to change this; see `env.example`:
+        - GIT_CHECKOUT=${SYGIL_HASH:-091520bed06f913c9f432f9f47ccbe22b46068d7}
+    init: true
+    ports:
+      - "7860:7860"
+      - "8501:8501"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/root/stable-diffusion-webui/outputs
+      - cache-sygil:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+
   resources:
     profiles: [resources]
     image: localhost/sd-multi/resources:latest
@@ -158,10 +160,12 @@ services:
     init: true
     volumes:
       - ./res:/res:rw
+
+
 volumes:
   cache-amotile:
   cache-automatic1111:
-  cache-hlky:
+  cache-sygil:
   cache-lama:
   cache-lstein:
   cache-osi1880vr:
