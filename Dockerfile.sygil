@@ -33,6 +33,10 @@ RUN mkdir ~/.conda \
  && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
  && /opt/conda/bin/conda clean -afy
 
+RUN apt update \
+ && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y libsndfile1 \
+ && apt-get clean
+
 ARG GIT_CHECKOUT=master
 
 RUN git clone https://github.com/sd-webui/stable-diffusion-webui.git \
@@ -45,6 +49,7 @@ ENV STREAMLIT_SERVER_HEADLESS=true
 
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/model.ckpt \
+ && ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/Stable\ Diffusion\ v1.5.ckpt \
  && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/gfpgan/weights/detection_Resnet50_Final.pth \
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/gfpgan/weights/parsing_parsenet.pth \
