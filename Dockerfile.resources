@@ -1,0 +1,8 @@
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1
+
+RUN pip install --no-cache-dir huggingface-hub==0.10.1 progressbar2==3.55.0
+COPY resource-manager.py /
+
+CMD ["python", "/resource-manager.py"]

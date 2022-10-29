@@ -77,6 +77,31 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  lama:
+    profiles: [lama]
+    image: localhost/sd-multi/lama:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.lama
+      args:
+        # Use a `.env` file to change this; see `env.example`:
+        - PIP_VERSION=${LAMA_VERSION:-0.24.4}
+    environment:
+        - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN:-}
+    init: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./res:/res:ro
+      - ./output:/root/outputs
+      - cache-lama:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   lstein:
     profiles: [lstein]
     image: localhost/sd-multi/lstein:latest
@@ -122,9 +147,21 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  resources:
+    profiles: [resources]
+    image: localhost/sd-multi/resources:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.resources
+    environment:
+        - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN:-}
+    init: true
+    volumes:
+      - ./res:/res:rw
 volumes:
   cache-amotile:
   cache-automatic1111:
   cache-hlky:
+  cache-lama:
   cache-lstein:
   cache-osi1880vr:
