@@ -110,7 +110,7 @@ services:
       dockerfile: Dockerfile.lstein
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${LSTEIN_HASH:-e4ed0943e2d87b59d8f4f482e8d1fdb962ba82ea}
+        - GIT_CHECKOUT=${LSTEIN_HASH:-986cc49d7a8441a70c709c04a55016a1c783f2ed}
     init: true
     ports:
       - "9090:9090"
