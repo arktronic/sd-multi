@@ -133,7 +133,7 @@ services:
       dockerfile: Dockerfile.osi1880vr
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${OSI1880VR_HASH:-ea69f9271d29517a7cb4a3ad6c790272e2f82333}
+        - GIT_CHECKOUT=${OSI1880VR_HASH:-8dbd9f197a0da38e7047013c5217aa9c55ea2a29}
     ports:
       - "8501:8501"
     volumes:
