@@ -28,7 +28,7 @@ services:
               count: 1
               capabilities: [gpu]
   automatic1111:
-    profiles: [automatic1111]
+    profiles: [automatic1111, auto1111, auto]
     image: localhost/sd-multi/automatic1111:latest
     build:
       context: .
