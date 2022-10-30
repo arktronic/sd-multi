@@ -10,7 +10,7 @@ Docker is used to provide some isolation between various systems' dependencies b
 
 ## Usage
 
-For a detailed description of how to get this working in Windows using WSL2 and native Docker (not Docker Desktop), see **[my blog post](https://trycatch.dev/2022/10/01/stable-diffusion-on-wsl2-with-docker/)**.
+For a detailed description of how to get this working in Windows using WSL2 and native Docker (not Docker Desktop), see **[this blog post](https://trycatch.dev/2022/10/01/stable-diffusion-on-wsl2-with-docker/)**.
 
 ### Prerequisites
 
@@ -20,7 +20,7 @@ For a detailed description of how to get this working in Windows using WSL2 and 
 - [Docker CE](https://docs.docker.com/engine/install/) installed
 - [Docker Compose plugin](https://docs.docker.com/compose/install/) installed
 - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) installed
-- Git and wget installed in WSL2/Linux
+- Git installed in WSL2/Linux
 - The file [`sd-v1-4.ckpt`](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) and/or [`v1-5-pruned-emaonly.ckpt`](https://huggingface.co/runwayml/stable-diffusion-v1-5) from Hugging Face (free registration required)
     - Alternatively, after registering for a Hugging Face account, you can generate a new [token](https://huggingface.co/settings/tokens) for automatic downloading
 
@@ -33,7 +33,7 @@ git clone https://github.com/arktronic/sd-multi.git
 cd sd-multi
 ```
 
-2. If not using a Hugging Face token, place the `sd-v1-4.ckpt` and/or `v1-5-pruned-emaonly.ckpt` file you downloaded earlier into `~/sd-multi/res/`
+2. If *not* using a Hugging Face token, place the `sd-v1-4.ckpt` and/or `v1-5-pruned-emaonly.ckpt` file you downloaded earlier into `~/sd-multi/res/`
 3. If you do have a Hugging Face token, copy `env.example` to `.env` inside `~/sd-multi` and edit the `.env` file:
     - Uncomment the `#HUGGINGFACE_TOKEN=` line by removing the `#` in front
     - Insert your Hugging Face token after the equals sign, like so: `HUGGINGFACE_TOKEN=hf_asdfasdfasdfasdfasdf`
