@@ -146,7 +146,7 @@ def process_hf_files():
 
 def process_supplemental():
   pathlib.Path("/res/checkpoints").mkdir(parents=True, exist_ok=True)
-  os.system("chmod -R go+r /res")
+  os.system("chmod -R go+rw /res")
   if pathlib.Path("/res/sd-v1-4.ckpt").exists() and not pathlib.Path("/res/checkpoints/sd-v1-4.ckpt").exists():
     os.system("ln -sf ../sd-v1-4.ckpt /res/checkpoints/sd-v1-4.ckpt")
   if pathlib.Path("/res/v1-5-pruned-emaonly.ckpt").exists() and not pathlib.Path("/res/checkpoints/v1-5-pruned-emaonly.ckpt").exists():
