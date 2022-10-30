@@ -63,6 +63,7 @@ docker compose --profile amotile up --build
 
 #### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), one of the most active forks with lots of features and scripts
 - includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics) script and [Deforum](https://github.com/deforum-art/deforum-for-automatic1111-webui) extension!
+- fine-tuned VAE is enabled
 ```bash
 docker compose --profile auto up --build
 ```
