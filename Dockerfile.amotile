@@ -79,4 +79,3 @@ RUN ln -s /res/target-model.ckpt /root/stable-diffusion-webui/models/Stable-diff
  && echo -e "[program:amotile-backend]\ncommand=npm start\ndirectory=/root/stable-diffusion-backend\nautorestart=true\nstartretries=99\nstdout_logfile=/dev/stdout\nstdout_logfile_maxbytes=0\nstderr_logfile=/dev/stdout\nstderr_logfile_maxbytes=0\n" >> /etc/supervisor/supervisord.conf
 
 WORKDIR /root
-CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

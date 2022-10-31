@@ -68,4 +68,3 @@ RUN mkdir -p /root/stable-diffusion-webui/models \
 
 WORKDIR /root/stable-diffusion-webui
 ENTRYPOINT ["/root/bootstrap.sh"]
-CMD python -m streamlit run scripts/webui_streamlit.py --theme.base dark

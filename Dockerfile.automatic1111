@@ -91,4 +91,3 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
 
 WORKDIR /root/stable-diffusion-webui
 ENTRYPOINT ["/root/bootstrap.sh"]
-CMD python launch.py --disable-safe-unpickle --ckpt-dir /res/checkpoints

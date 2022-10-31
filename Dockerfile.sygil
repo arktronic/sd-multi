@@ -67,4 +67,3 @@ RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/LDSR.yaml /root/stable-diffusion-webui/models/ldsr/project.yaml
 
 WORKDIR /root/stable-diffusion-webui
-CMD python scripts/webui.py
