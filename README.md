@@ -52,8 +52,10 @@ Felis catus is your taxonomic nomenclature, an endothermic quadruped, carnivorou
 ---
 
 #### ⭐ [amotile (stable-diffusion-studio)](https://github.com/amotile/stable-diffusion-studio/), an animation-focused frontend
+
+Launch:
 ```bash
-docker compose --profile amotile up --build
+./run-amotile.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/196015333-f91b9cf7-702d-4207-97b6-aa3504aece8b.png)
 
@@ -64,58 +66,70 @@ docker compose --profile amotile up --build
 #### ⭐ [AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/), one of the most active forks with lots of features and scripts
 - includes [Txt2Vectorgraphics](https://github.com/GeorgLegato/Txt2Vectorgraphics) script and [Deforum](https://github.com/deforum-art/deforum-for-automatic1111-webui) extension!
 - fine-tuned VAE is enabled
+
+Launch:
 ```bash
-docker compose --profile auto up --build
+./run-automatic1111.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/196003725-c6bb6624-4900-4fa8-a76f-c1639d86fb96.png)
 
 ---
 
 #### ⭐ [InvokeAI (a.k.a. lstein)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (web mode - beautiful interface!)
+
+Launch:
 ```bash
-docker compose --profile invokeai up --build
+./run-invokeai-web.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965220-d1225e16-9ad0-4093-89e1-f1b60a726719.png)
 
 ---
 
 #### ⭐ [InvokeAI (a.k.a. lstein)](https://github.com/invoke-ai/InvokeAI/), an early but well-maintained fork (CLI mode)
+
+Launch:
 ```bash
-docker compose build invokeai \
- && docker compose run --service-ports --rm lstein python scripts/invoke.py
+./run-invokeai-cli.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965397-36635481-ae00-4b1b-a38f-9f2dae34a84a.png)
 
 ---
 
 #### ⭐ [lama-cleaner](https://github.com/Sanster/lama-cleaner), an inpainting/cleaning tool that supports SD and many other models
+
+Launch:
 ```bash
-docker compose --profile lama up --build
+./run-lama.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/198845701-aba9865b-0f2e-4f03-a332-1bbea567bf8c.png)
 
 ---
 
 #### ⭐ [osi1880vr (deforum-sd-ui)](https://github.com/osi1880vr/deforum-sd-ui/), a Deforum-based animation/video web UI fork
+
+Launch:
 ```bash
-docker compose --profile osi1880vr up --build
+./run-osi1880vr.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/194966751-77ecd5a3-1bc3-40a1-8fc9-9ffd12e5c99a.png)
 
 ---
 
 #### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/Sygil-Dev/sygil-webui/), an established, easy to use fork (gradio mode)
+
+Launch:
 ```bash
-docker compose --profile sygil up --build
+./run-sygil-gradio.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/194965931-46949452-0103-48f1-bb7a-a149338ed97c.png)
 
 ---
 
 #### ⭐ [Sygil (a.k.a. hlky, sd-webui)](https://github.com/Sygil-Dev/sygil-webui/), an established, easy to use fork (streamlit mode)
+
+Launch:
 ```bash
-docker compose build sygil \
- && docker compose run --service-ports --rm sygil bash -c 'python -m streamlit run scripts/webui_streamlit.py'
+./run-sygil-streamlit.sh
 ```
 ![image](https://user-images.githubusercontent.com/344911/194966164-eb4dc5a4-4ad5-43f1-8d7d-254dbacf4f57.png)
 
