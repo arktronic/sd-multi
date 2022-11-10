@@ -63,7 +63,7 @@ services:
       dockerfile: Dockerfile.invokeai
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${INVOKEAI_HASH:-986cc49d7a8441a70c709c04a55016a1c783f2ed}
+        - GIT_CHECKOUT=${INVOKEAI_HASH:-8b47c82992647d6caffe611305f5d30049fa8146}
     command: ${SD_MULTI_INVOKEAI_COMMAND:-bash -c 'python scripts/invoke.py --web --host 0.0.0.0'}
     init: true
     ports:
