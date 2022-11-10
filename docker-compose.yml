@@ -87,7 +87,7 @@ services:
       dockerfile: Dockerfile.lama
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - PIP_VERSION=${LAMA_VERSION:-0.24.4}
+        - PIP_VERSION=${LAMA_VERSION:-0.25.0}
     environment:
         - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN:-}
     command: ${SD_MULTI_LAMA_COMMAND-}
