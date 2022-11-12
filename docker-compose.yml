@@ -137,7 +137,7 @@ services:
       dockerfile: Dockerfile.sygil
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${SYGIL_HASH:-091520bed06f913c9f432f9f47ccbe22b46068d7}
+        - GIT_CHECKOUT=${SYGIL_HASH:-ac4c246e87c9939a20d715ca38efac3daf329781}
     command: ${SD_MULTI_SYGIL_COMMAND:-bash -c 'python scripts/webui.py'}
     init: true
     ports:

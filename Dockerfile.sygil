@@ -39,12 +39,11 @@ RUN apt update \
 
 ARG GIT_CHECKOUT=master
 
-RUN git clone https://github.com/sd-webui/stable-diffusion-webui.git \
+RUN git clone https://github.com/Sygil-Dev/sygil-webui.git stable-diffusion-webui \
  && cd stable-diffusion-webui \
  && git checkout $GIT_CHECKOUT \
- && conda env create -f /root/stable-diffusion-webui/environment.yaml
+ && conda env update -n $CONDA_DEFAULT_ENV -f /root/stable-diffusion-webui/environment.yaml
 
-ENV CONDA_DEFAULT_ENV=ldm
 ENV STREAMLIT_SERVER_HEADLESS=true
 
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
