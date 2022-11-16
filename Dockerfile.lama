@@ -36,7 +36,7 @@ RUN mkdir ~/.conda \
 ARG PIP_VERSION
 
 RUN conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
-RUN pip install lama-cleaner==$PIP_VERSION
+RUN pip install lama-cleaner==$PIP_VERSION ftfy==6.1.1 spacy==3.4.3
 
 RUN echo -e "#!/bin/bash\nset -e\n" > /root/bootstrap.sh \
  && echo -e "if [ ! -z \"\$@\" ]; then" >> /root/bootstrap.sh \
