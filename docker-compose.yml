@@ -36,9 +36,9 @@ services:
       dockerfile: Dockerfile.automatic1111
       args:
         # Use a `.env` file to change this; see `env.example`:
-        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-ac085628540d0ec6a988fad93f5b8f2154209571}
+        - GIT_CHECKOUT=${AUTOMATIC1111_HASH:-98947d173e3f1667eba29c904f681047dea9de90}
         - TXT2VECTORGRAPHICS_CHECKOUT=${AUTOMATIC1111_TXT2VECTORGRAPHICS_HASH:-2b780584f603b9abebba02527f3e0c3eed63426b}
-        - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-53e7b7479769e92ed1a6c631016899e357ad5a27}
+        - DEFORUM_CHECKOUT=${AUTOMATIC1111_DEFORUM_HASH:-6785b88b9462e97582a1fbb960d20c0edc00efcc}
     command: ${SD_MULTI_AUTOMATIC1111_COMMAND:-bash -c 'python launch.py --disable-safe-unpickle --ckpt-dir /res/checkpoints'}
     init: true
     ports:
