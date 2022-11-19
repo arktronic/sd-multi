@@ -38,11 +38,8 @@ ARG GIT_CHECKOUT=main
 RUN git clone https://github.com/invoke-ai/InvokeAI.git stable-diffusion-webui \
  && cd stable-diffusion-webui \
  && git checkout $GIT_CHECKOUT \
- && conda create --name invokeai --no-default-packages --yes \
- && conda install -n invokeai pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge \
- && conda env update -n invokeai -f /root/stable-diffusion-webui/environment.yml
-
-ENV CONDA_DEFAULT_ENV=invokeai
+ && ln -sf /root/stable-diffusion-webui/environments-and-requirements/environment-lin-cuda.yml environment.yml \
+ && conda env update -n $CONDA_DEFAULT_ENV -f /root/stable-diffusion-webui/environment.yml
 
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/sd-v1-4.ckpt \
@@ -50,8 +47,8 @@ RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/vae-ft-mse-840000-ema-pruned.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/vae-ft-mse-840000-ema-pruned.ckpt \
  && ln -s /res/sd-v1-5-inpainting.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/sd-v1-5-inpainting.ckpt \
  && cp /root/stable-diffusion-webui/configs/models.yaml.example /root/stable-diffusion-webui/configs/models.yaml \
- && mkdir -p /root/stable-diffusion-webui/src/gfpgan/experiments/pretrained_models \
- && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/src/gfpgan/experiments/pretrained_models/GFPGANv1.4.pth \
+ && mkdir -p /root/stable-diffusion-webui/models/gfpgan \
+ && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/models/gfpgan/GFPGANv1.4.pth \
  && mkdir -p /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights \
  && ln -s /res/codeformer.pth /root/stable-diffusion-webui/ldm/invoke/restoration/codeformer/weights/codeformer.pth \
  && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
