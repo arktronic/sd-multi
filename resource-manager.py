@@ -29,6 +29,10 @@ files_normal = (
   ["3c917d1b86d058918d4055e70b2cdb9696ec4967bb2d8f05c0051263c1ac9641", "AdaBins_nyu.pt", "https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt"],
   ["1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7", "codeformer.pth", "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth"],
   ["c6a580b13a5bc05a5e16e4dbb80608ff2ec251a162311590c1f34c013d7f3dab", "vae-ft-mse-840000-ema-pruned.ckpt", "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"],
+  ["d635794c1fedfdfa261e065370bea59c651fc9bfa65dc6d67ad29e11869a1824", "sd2.0-512-base-ema.ckpt", "https://huggingface.co/stabilityai/stable-diffusion-2-base/resolve/main/512-base-ema.ckpt"],
+  ["ec4094bd36ef558cd9d52c9985471ac91d2c0c5bd071717411a4ccd5adf4f311", "sd2.0-512-base-ema.yaml", "https://raw.githubusercontent.com/Stability-AI/stablediffusion/ca86da3a30c4e080d4db8c25fca73de843663cb4/configs/stable-diffusion/v2-inference.yaml"],
+  ["bfcaf0755797b0c30eb00a3787e8b423eb1f5decd8de76c4d824ac2dd27e139f", "sd2.0-768-v-ema.ckpt", "https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt"],
+  ["72b092aadfe146f5d3f395a720c0aa3b2354b2095e3f10dc18f0e9716d286dcb", "sd2.0-768-v-ema.yaml", "https://raw.githubusercontent.com/Stability-AI/stablediffusion/ca86da3a30c4e080d4db8c25fca73de843663cb4/configs/stable-diffusion/v2-inference-v.yaml"],
 )
 files_hf = (
   ["fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556", "sd-v1-4.ckpt", "https://huggingface.co/CompVis/stable-diffusion-v-1-4-original", {"repo_id":"CompVis/stable-diffusion-v-1-4-original","filename":"sd-v1-4.ckpt"}],
@@ -153,6 +157,14 @@ def process_supplemental():
     os.system("ln -sf ../v1-5-pruned-emaonly.ckpt /res/checkpoints/v1-5-pruned-emaonly.ckpt")
   if pathlib.Path("/res/vae-ft-mse-840000-ema-pruned.ckpt").exists() and not pathlib.Path("/res/checkpoints/v1-5-pruned-emaonly.vae.pt").exists():
     os.system("ln -sf ../vae-ft-mse-840000-ema-pruned.ckpt /res/checkpoints/v1-5-pruned-emaonly.vae.pt")
+  if pathlib.Path("/res/sd2.0-512-base-ema.ckpt").exists() and not pathlib.Path("/res/checkpoints/sd2.0-512-base-ema.ckpt").exists():
+    os.system("ln -sf ../sd2.0-512-base-ema.ckpt /res/checkpoints/sd2.0-512-base-ema.ckpt")
+  if pathlib.Path("/res/sd2.0-512-base-ema.yaml").exists() and not pathlib.Path("/res/checkpoints/sd2.0-512-base-ema.yaml").exists():
+    os.system("ln -sf ../sd2.0-512-base-ema.yaml /res/checkpoints/sd2.0-512-base-ema.yaml")
+  if pathlib.Path("/res/sd2.0-768-v-ema.ckpt").exists() and not pathlib.Path("/res/checkpoints/sd2.0-768-v-ema.ckpt").exists():
+    os.system("ln -sf ../sd2.0-768-v-ema.ckpt /res/checkpoints/sd2.0-768-v-ema.ckpt")
+  if pathlib.Path("/res/sd2.0-768-v-ema.yaml").exists() and not pathlib.Path("/res/checkpoints/sd2.0-768-v-ema.yaml").exists():
+    os.system("ln -sf ../sd2.0-768-v-ema.yaml /res/checkpoints/sd2.0-768-v-ema.yaml")
 
   if not pathlib.Path("/res/target-model.ckpt").exists():
     if pathlib.Path("/res/v1-5-pruned-emaonly.ckpt").exists():
