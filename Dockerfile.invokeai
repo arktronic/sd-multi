@@ -41,6 +41,8 @@ RUN git clone https://github.com/invoke-ai/InvokeAI.git stable-diffusion-webui \
  && ln -sf /root/stable-diffusion-webui/environments-and-requirements/environment-lin-cuda.yml environment.yml \
  && conda env update -n $CONDA_DEFAULT_ENV -f /root/stable-diffusion-webui/environment.yml
 
+ENV INVOKEAI_ROOT=/root/stable-diffusion-webui
+
 RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/sd-v1-4.ckpt \
  && ln -s /res/v1-5-pruned-emaonly.ckpt /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1/v1-5-pruned-emaonly.ckpt \
@@ -54,7 +56,7 @@ RUN mkdir -p /root/stable-diffusion-webui/models/ldm/stable-diffusion-v1 \
  && mkdir -p /root/stable-diffusion-webui/gfpgan/weights \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/gfpgan/weights/detection_Resnet50_Final.pth \
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/gfpgan/weights/parsing_parsenet.pth \
- && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.cache/.preloaded' ] && mkdir -p /root/.cache/.preload-weights && python /root/stable-diffusion-webui/scripts/preload_models.py && touch /root/.cache/.preloaded\nexec \"\$@\"" > /root/bootstrap.sh \
+ && echo -e "#!/bin/bash\nset -e\n[ ! -f '/root/.invokeai' ] && python /root/stable-diffusion-webui/scripts/configure_invokeai.py --no-interactive && touch /root/.invokeai\nexec \"\$@\"" > /root/bootstrap.sh \
  && chmod +x /root/bootstrap.sh
 
 WORKDIR /root/stable-diffusion-webui
