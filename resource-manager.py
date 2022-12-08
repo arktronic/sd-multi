@@ -29,10 +29,8 @@ files_normal = (
   ["3c917d1b86d058918d4055e70b2cdb9696ec4967bb2d8f05c0051263c1ac9641", "AdaBins_nyu.pt", "https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt"],
   ["1009e537e0c2a07d4cabce6355f53cb66767cd4b4297ec7a4a64ca4b8a5684b7", "codeformer.pth", "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth"],
   ["c6a580b13a5bc05a5e16e4dbb80608ff2ec251a162311590c1f34c013d7f3dab", "vae-ft-mse-840000-ema-pruned.ckpt", "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt"],
-  ["d635794c1fedfdfa261e065370bea59c651fc9bfa65dc6d67ad29e11869a1824", "sd2.0-512-base-ema.ckpt", "https://huggingface.co/stabilityai/stable-diffusion-2-base/resolve/main/512-base-ema.ckpt"],
-  ["ec4094bd36ef558cd9d52c9985471ac91d2c0c5bd071717411a4ccd5adf4f311", "sd2.0-512-base-ema.yaml", "https://raw.githubusercontent.com/Stability-AI/stablediffusion/ca86da3a30c4e080d4db8c25fca73de843663cb4/configs/stable-diffusion/v2-inference.yaml"],
-  ["bfcaf0755797b0c30eb00a3787e8b423eb1f5decd8de76c4d824ac2dd27e139f", "sd2.0-768-v-ema.ckpt", "https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt"],
-  ["72b092aadfe146f5d3f395a720c0aa3b2354b2095e3f10dc18f0e9716d286dcb", "sd2.0-768-v-ema.yaml", "https://raw.githubusercontent.com/Stability-AI/stablediffusion/ca86da3a30c4e080d4db8c25fca73de843663cb4/configs/stable-diffusion/v2-inference-v.yaml"],
+  ["ad2a33c361c1f593c4a1fb32ea81afce2b5bb7d1983c6b94793a26a3b54b08a0", "v2-1_768-ema-pruned.ckpt", "https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt"],
+  ["72b092aadfe146f5d3f395a720c0aa3b2354b2095e3f10dc18f0e9716d286dcb", "v2-1_768-ema-pruned.yaml", "https://raw.githubusercontent.com/Stability-AI/stablediffusion/ca86da3a30c4e080d4db8c25fca73de843663cb4/configs/stable-diffusion/v2-inference-v.yaml"],
 )
 files_hf = (
   ["fe4efff1e174c627256e44ec2991ba279b3816e364b49f9be2abc0b3ff3f8556", "sd-v1-4.ckpt", "https://huggingface.co/CompVis/stable-diffusion-v-1-4-original", {"repo_id":"CompVis/stable-diffusion-v-1-4-original","filename":"sd-v1-4.ckpt"}],
