@@ -155,14 +155,10 @@ def process_supplemental():
     os.system("ln -sf ../v1-5-pruned-emaonly.ckpt /res/checkpoints/v1-5-pruned-emaonly.ckpt")
   if pathlib.Path("/res/vae-ft-mse-840000-ema-pruned.ckpt").exists() and not pathlib.Path("/res/checkpoints/v1-5-pruned-emaonly.vae.pt").exists():
     os.system("ln -sf ../vae-ft-mse-840000-ema-pruned.ckpt /res/checkpoints/v1-5-pruned-emaonly.vae.pt")
-  if pathlib.Path("/res/sd2.0-512-base-ema.ckpt").exists() and not pathlib.Path("/res/checkpoints/sd2.0-512-base-ema.ckpt").exists():
-    os.system("ln -sf ../sd2.0-512-base-ema.ckpt /res/checkpoints/sd2.0-512-base-ema.ckpt")
-  if pathlib.Path("/res/sd2.0-512-base-ema.yaml").exists() and not pathlib.Path("/res/checkpoints/sd2.0-512-base-ema.yaml").exists():
-    os.system("ln -sf ../sd2.0-512-base-ema.yaml /res/checkpoints/sd2.0-512-base-ema.yaml")
-  if pathlib.Path("/res/sd2.0-768-v-ema.ckpt").exists() and not pathlib.Path("/res/checkpoints/sd2.0-768-v-ema.ckpt").exists():
-    os.system("ln -sf ../sd2.0-768-v-ema.ckpt /res/checkpoints/sd2.0-768-v-ema.ckpt")
-  if pathlib.Path("/res/sd2.0-768-v-ema.yaml").exists() and not pathlib.Path("/res/checkpoints/sd2.0-768-v-ema.yaml").exists():
-    os.system("ln -sf ../sd2.0-768-v-ema.yaml /res/checkpoints/sd2.0-768-v-ema.yaml")
+  if pathlib.Path("/res/v2-1_768-ema-pruned.ckpt").exists() and not pathlib.Path("/res/checkpoints/v2-1_768-ema-pruned.ckpt").exists():
+    os.system("ln -sf ../v2-1_768-ema-pruned.ckpt /res/checkpoints/v2-1_768-ema-pruned.ckpt")
+  if pathlib.Path("/res/v2-1_768-ema-pruned.yaml").exists() and not pathlib.Path("/res/checkpoints/v2-1_768-ema-pruned.yaml").exists():
+    os.system("ln -sf ../v2-1_768-ema-pruned.yaml /res/checkpoints/v2-1_768-ema-pruned.yaml")
 
   if not pathlib.Path("/res/target-model.ckpt").exists():
     if pathlib.Path("/res/v1-5-pruned-emaonly.ckpt").exists():
