@@ -1,11 +1,11 @@
-FROM nvidia/cuda:11.3.1-base-ubuntu20.04
+FROM nvidia/cuda:11.7.1-base-ubuntu20.04
 
 SHELL ["/bin/bash", "-c"]
 
 WORKDIR /root
 
 RUN apt update \
- && apt install --no-install-recommends -y curl wget git libglib2.0-0 libgl1 build-essential fonts-dejavu \
+ && apt install --no-install-recommends -y curl wget git libglib2.0-0 libgl1 build-essential fonts-dejavu libcairo2-dev pkg-config \
  && apt-get clean
 
 VOLUME /root/.cache
@@ -33,8 +33,8 @@ RUN mkdir ~/.conda \
  && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
  && /opt/conda/bin/conda clean -afy
 
-RUN conda install python=3.10.6 -c conda-forge \
- && conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch \
+RUN conda install python=3.10.11 -c conda-forge \
+ && conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia \
  && conda remove --force --yes ffmpeg
 
 RUN apt update \
@@ -44,6 +44,7 @@ RUN apt update \
 ARG GIT_CHECKOUT=master
 ARG TXT2VECTORGRAPHICS_CHECKOUT=main
 ARG DEFORUM_CHECKOUT=automatic1111-webui
+ARG CONTROLNET_CHECKOUT=main
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cd stable-diffusion-webui \
@@ -58,7 +59,10 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git \
  && cp txt2vectorgfx.py /root/stable-diffusion-webui/scripts/ \
  && git clone https://github.com/deforum-art/deforum-for-automatic1111-webui.git /root/stable-diffusion-webui/extensions/deforum \
  && cd /root/stable-diffusion-webui/extensions/deforum \
- && git checkout $DEFORUM_CHECKOUT
+ && git checkout $DEFORUM_CHECKOUT \
+ && git clone https://github.com/Mikubill/sd-webui-controlnet.git /root/stable-diffusion-webui/extensions/sd-webui-controlnet \
+ && cd /root/stable-diffusion-webui/extensions/sd-webui-controlnet \
+ && git checkout $CONTROLNET_CHECKOUT
 
 RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt \
  && mkdir -p /root/stable-diffusion-webui/models/LDSR \
@@ -66,9 +70,6 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && ln -s /res/LDSR.yaml /root/stable-diffusion-webui/models/LDSR/project.yaml \
  && mkdir -p /root/stable-diffusion-webui/models/SwinIR \
  && ln -s /res/SwinIR_4x.pth /root/stable-diffusion-webui/models/SwinIR/SwinIR_4x.pth \
- && mkdir -p /root/stable-diffusion-webui/models/Deforum \
- && ln -s /res/dpt_large-midas-2f21e586.pt /root/stable-diffusion-webui/models/Deforum/dpt_large-midas-2f21e586.pt \
- && ln -s /res/AdaBins_nyu.pt /root/stable-diffusion-webui/models/Deforum/AdaBins_nyu.pt \
  && mkdir -p /root/stable-diffusion-webui/models/ESRGAN \
  && ln -s /res/BSRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/BSRGAN.pth \
  && ln -s /res/ESRGAN.pth /root/stable-diffusion-webui/models/ESRGAN/ESRGAN_4x.pth \
@@ -83,6 +84,8 @@ RUN ln -s /res/sd-v1-4.ckpt /root/stable-diffusion-webui/models/Stable-diffusion
  && ln -s /res/parsing_parsenet.pth /root/stable-diffusion-webui/models/GFPGAN/parsing_parsenet.pth \
  && ln -s /res/detection_Resnet50_Final.pth /root/stable-diffusion-webui/models/GFPGAN/detection_Resnet50_Final.pth \
  && ln -s /res/GFPGANv1.4.pth /root/stable-diffusion-webui/models/GFPGAN/GFPGANv1.4.pth \
+ && rm -rf /root/stable-diffusion-webui/extensions/sd-webui-controlnet/models \
+ && ln -s /res/controlnet /root/stable-diffusion-webui/extensions/sd-webui-controlnet/models \
  && echo -e "#!/bin/bash\nset -e\n" > /root/bootstrap.sh \
  && echo -e "[ ! -f '/root/.cache/persistent-ui-config.json' ] && echo '{}' > /root/.cache/persistent-ui-config.json\nln -sf /root/.cache/persistent-ui-config.json /root/stable-diffusion-webui/ui-config.json\n" >> /root/bootstrap.sh \
  && echo -e "[ ! -f '/root/.cache/persistent-config.json' ] && echo '{}' > /root/.cache/persistent-config.json\nln -sf /root/.cache/persistent-config.json /root/stable-diffusion-webui/config.json\n" >> /root/bootstrap.sh \
